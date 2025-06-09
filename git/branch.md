@@ -14,7 +14,7 @@
 - **`epic/<short-description>-#<issue-number>`**
     
     Branch for a large-scale or multi-part feature (epic)
-    - Acts as a “dev” for its child feature/bugfix/refactor/minor branches
+    - Acts as a “dev” for its child feature/bugfix/refactor/chore branches
 - **`feature/<short-description>-#<issue-number>`**
     
     New functionality or enhancement (create from **dev** or **epic**)
@@ -27,7 +27,7 @@
 - **`refactor/<short-description>-#<issue-number>`**
     
     Architectural or major code-structure change (create from **dev** or **epic**)
-- **`minor/<short-description>-#<issue-number>`**
+- **`chore/<short-description>-#<issue-number>`**
     
     Non-functional tweaks (code style, docs, small edits) (create from **dev** or **epic**)
 - **`experimental/<short-description>-#<issue-number>`**
@@ -51,7 +51,7 @@
     - `bugfix/fix-null-pointer-exception-#174`
     - `hotfix/critical-db-leak-#125`
     - `refactor/extract-user-service-#126`
-    - `minor/update-readme-#127`
+    - `chore/update-readme-#127`
     - `experimental/fft-integrate-#448`
 
 ## 3. Branch Lifecycle
@@ -84,7 +84,7 @@
 6. **Hotfix Branches**
     - Create `hotfix/<short-description>-#<issue-number>` from `main`
     - Apply the fix, then open an PR from your branch into `main`
-    - Require same process, but insted of "Release vX.Y.Z" use "Hotfix vX.Y.Z <short description>"
+    - Require same process, but instead of "Release vX.Y.Z" use "Hotfix vX.Y.Z <short description>"
     - After this, creating `bugfix` issue to fix this problem in `dev`
 7. **Cleanup**
     - **Within 24 hours** after merge: locally delete branch
