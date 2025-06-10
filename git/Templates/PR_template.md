@@ -4,7 +4,7 @@ Closes #<issue-number>
 <!-- Briefly describe what this PR does and why -->
 
 ## What was done
-<!-- Подробное описание изменений -->
+<!-- Detailed description of changes -->
 
 ## How to Test
 <!-- Steps for reviewers to verify that everything works as expected. -->
