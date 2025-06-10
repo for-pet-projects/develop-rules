@@ -96,7 +96,7 @@
 3. **Approvals:** Minimum **2** reviewers (including administrators if necessary)
 4. **Status checks:** All must pass (CI pipeline, tests, linters, etc.)
 5. **One PR = one logical change.**
-6. **PR title format:** `[<branch-name>] Closes #<issue-number>`
+6. **PR title format:** `[<branch-name>]`
 7. **PR description:** Follow the PR template exactly
 
 > **Reminder:** These rules apply to everyone (developers, administrators, integrators) without exception
