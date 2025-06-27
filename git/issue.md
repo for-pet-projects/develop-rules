@@ -6,7 +6,7 @@
 - **Title format:** `<type>/<short-description>` in [kebab-case](https://en.wikipedia.org/wiki/Naming_convention_(programming)) — only lowercase English letters, digits, `-` and `/`
 - **No renaming:** close & reopen to correct titles, rather than renaming
 - **Prevent duplicates:** search existing issues carefully before creating a new one
-- Follow the `git/Templates/issue_template.md`
+- Follow the `.github/ISSUE_TEMPLATE/<template-type>.md`
 
 ## 2. Mandatory Labels
 
