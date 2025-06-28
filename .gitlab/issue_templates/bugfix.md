@@ -1,0 +1,1 @@
+../../.github/ISSUE_TEMPLATE/bugfix.md
