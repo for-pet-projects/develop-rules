@@ -3,13 +3,14 @@ import tarfile
 import io
 from pathlib import Path
 from textwrap import dedent
+from typing import Union
 
 class ReleaseRunBuilder:
     def __init__(self, root: Path, version: str, name: str, list_files: dict[str, Path], output_dir: Path):
         self.root = root
         self.version = version
         self.name = name
-        self.list_files = list_files  # key = section name (e.g., wiki, templates)
+        self.list_files = list_files  # section -> list_file
         self.output_dir = output_dir
         self.output_path = self.output_dir / f"{name}-v{version}.run"
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -20,15 +21,29 @@ class ReleaseRunBuilder:
                 raise FileNotFoundError(f"Missing list file: {list_file}")
             with open(list_file, "r") as f:
                 for line in f:
-                    path = line.strip()
-                    if path and not path.startswith("#"):
-                        full = self.root / path
-                        if full.exists():
-                            yield section, full
+                    line = line.strip()
+                    if line and not line.startswith("#"):
+                        parts = line.split("=>")
+                        src = parts[0].strip()
+                        dst = parts[1].strip() if len(parts) > 1 else src
+                        full_src = self.root / src
+                        if full_src.exists():
+                            yield section, full_src, dst
                         else:
-                            print(f"Warning: skipping missing path {full}")
+                            print(f"Warning: skipping missing path {full_src}")
 
     def generate_script_header(self) -> bytes:
+        template_copy_lines = []
+        template_copy_lines.append("mkdir -p \"$TMPDIR/main-repo\"")
+        template_copy_lines.append("cd \"$TMPDIR/main-repo\"")
+        template_copy_lines.append("TEMPLATE_ROOT=\"$TMPDIR/__TEMPLATES__\"")
+        template_copy_lines.append("find \"$TEMPLATE_ROOT\" -type f | while read src; do")
+        template_copy_lines.append("    rel=\"${src#$TEMPLATE_ROOT/}\"")
+        template_copy_lines.append("    dst=\"$rel\"")
+        template_copy_lines.append("    mkdir -p \"$(dirname \"$dst\")\"")
+        template_copy_lines.append("    cp \"$src\" \"$dst\"")
+        template_copy_lines.append("done")
+
         return dedent(f"""
             #!/bin/sh
 
@@ -85,12 +100,7 @@ class ReleaseRunBuilder:
             cd "$TMPDIR/main-repo"
             git checkout "$TEMPLATE_BRANCH" || git checkout -b "$TEMPLATE_BRANCH"
 
-            shopt -s dotglob nullglob
-            TEMPLATES="$TMPDIR/__TEMPLATES__"
-            if [ -d "$TEMPLATES" ] && [ "$(ls -A "$TEMPLATES")" ]; then
-                cp -r "$TEMPLATES"/* .
-            fi
-
+            {'\n            '.join(template_copy_lines)}
 
             git add .
             git commit -m "Add templates from release bundle"
@@ -112,9 +122,9 @@ class ReleaseRunBuilder:
 
         archive_stream = io.BytesIO()
         with tarfile.open(fileobj=archive_stream, mode="w:gz") as tar:
-            for section, item in self.collect_sources():
-                arcname = Path(f"__{section.upper()}__") / item.relative_to(self.root)
-                tar.add(item, arcname=arcname)
+            for section, src, dst in self.collect_sources():
+                arcname = Path(f"__{section.upper()}__") / dst
+                tar.add(src, arcname=arcname)
                 print(f"  + {arcname}")
 
         with open(self.output_path, "ab") as f:
