@@ -1,0 +1,33 @@
+# .clangd
+---
+CompileFlags:
+  Add: [-Wall, -Wextra, -Wpedantic]       # Enable common warnings
+
+FallbackFlags: [-std=c++17]               # If no compile_commands.json, assume C++17
+
+ClangTidy: true                           # Enable clang-tidy integration
+ClangTidyChecks: '*'                      # Respect .clang-tidy config
+Format: file                              # Use .clang-format for formatting
+
+Index:
+  Background: Build                       # Background indexing for fast navigation
+
+Diagnostics:
+  UnusedIncludes: Strict                  # Warn on unused includes
+
+InlayHints:
+  Enabled: true
+  ParameterNames: true                    # Show parameter names in function calls
+  DeducedTypes: true                      # Show deduced types (e.g. for auto/decltype)
+
+Hover:
+  ShowAKA: true                           # Show "also known as" type info (e.g. typedefs)
+
+Completion:
+  AllScopes: true                         # Suggest symbols from all visible scopes
+  FilterAndSort: true                     # Smarter suggestions
+  Dedupe: true                            # Remove duplicate results
+
+SemanticHighlighting: true               # Better semantic coloring (if IDE supports)
+
+...
