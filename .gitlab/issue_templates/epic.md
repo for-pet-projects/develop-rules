@@ -1,1 +1,0 @@
-../../.github/ISSUE_TEMPLATE/epic.md
