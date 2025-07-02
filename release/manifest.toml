@@ -1,2 +1,4 @@
 name = "develop-rules-github"
 version = "0.1.0"
+language = "en"
+git_client = "github"

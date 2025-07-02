@@ -1,6 +1,7 @@
 output/
 test/
 temp/
+build/
 
 **/__pycache__/
 *.py[cod]
@@ -17,3 +18,5 @@ env/
 .python-version
 
 .vscode
+
+release/manifest.toml
