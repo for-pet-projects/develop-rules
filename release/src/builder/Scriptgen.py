@@ -1,20 +1,25 @@
-from pathlib import Path
 from textwrap import dedent
 import shutil
 import tarfile
+
 from release.src.utils.Manifest import Manifest
+from release.src.utils.Paths import ProjectPath
+
 from release.src.utils.Print import print_status
 
 class BuildScriptGenerator:
-    def __init__(self, manifest: Manifest):
+    def __init__(self, manifest: Manifest, ppath : ProjectPath):
         self.manifest = manifest
-        self.temp_dir = manifest.project_root / "temp"
-        self.output_dir = manifest.project_root / "output"
-        self.output_name = f"{manifest.name}-v{manifest.version}.run"
+        self.ppath = ppath
+
+        self.temp_dir = ppath.temp_dir
+        self.output_dir = ppath.output_dir
+        
+        self.output_name = f"{manifest.full_name}.run"
         self.output_path = self.output_dir / self.output_name
 
     def generate(self):
-        print_status("SCRIPT", "Preparing .run archive...")
+        print_status("INF", "Preparing .run archive...")
 
         self.output_dir.mkdir(parents=True, exist_ok=True)
         archive_path = self.output_dir / f"{self.manifest.name}.tar.gz"
@@ -22,7 +27,7 @@ class BuildScriptGenerator:
         with tarfile.open(archive_path, "w:gz") as tar:
             tar.add(self.temp_dir, arcname=".")
 
-        print_status("SCRIPT", f"Packed: {archive_path.name}")
+        print_status("INF", f"Packed: {archive_path.name}")
 
         header = self.generate_script_header()
 
@@ -34,7 +39,7 @@ class BuildScriptGenerator:
         self.output_path.chmod(0o755)
         archive_path.unlink()  # cleanup
 
-        print_status("SCRIPT", f"Final: {self.output_path}")
+        print_status("OK", f"Final: {self.output_path}")
 
     def generate_script_header(self) -> bytes:
         return dedent(f"""
@@ -67,7 +72,7 @@ class BuildScriptGenerator:
                 echo "ERROR: Failed to clone wiki. Make sure it exists and you have access."
                 exit 1
             }}
-            cp -r "$TMPDIR/__WIKI__"/* "$TMPDIR/wiki-repo/{self.manifest.name}/"
+            cp -r "$TMPDIR/wiki"/* "$TMPDIR/wiki-repo/"
 
             cd "$TMPDIR/wiki-repo"
             git add .
@@ -79,7 +84,7 @@ class BuildScriptGenerator:
             cd "$TMPDIR/main-repo"
             git checkout "$TEMPLATE_BRANCH" || git checkout -b "$TEMPLATE_BRANCH"
 
-            TEMPLATE_ROOT="$TMPDIR/__TEMPLATES__"
+            TEMPLATE_ROOT="$TMPDIR/templates"
             find "$TEMPLATE_ROOT" -type f | while read src; do
                 rel="${{src#$TEMPLATE_ROOT/}}"
                 mkdir -p "$(dirname "$rel")"

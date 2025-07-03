@@ -11,5 +11,5 @@ class ReleaseBuilder:
 
     def build(self):
         print_status("INF", "Building release script")
-        scriptgen = BuildScriptGenerator(self.manifest)
+        scriptgen = BuildScriptGenerator(self.manifest, self.ppath)
         scriptgen.generate()

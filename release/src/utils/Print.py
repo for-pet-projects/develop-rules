@@ -1,3 +1,6 @@
+import os
+import sys
+
 def print_status(tag: str, message: str):
     COLORS = {
         "INF": "\033[94m",  # синий
@@ -13,3 +16,23 @@ def print_status(tag: str, message: str):
     color = COLORS.get(tag, "\033[90m")  # серый по умолчанию
     reset = COLORS["RST"]
     print(f"{color}[{tag:<3}]{reset} {message}")
+
+def wait_key():
+    print_status("ASK", "Press any key to continue...")
+    try:
+        if os.name == 'nt':
+            import msvcrt
+            msvcrt.getch()
+        else:
+            import termios
+            import tty
+            fd = sys.stdin.fileno()
+            old = termios.tcgetattr(fd)
+            try:
+                tty.setraw(fd)
+                sys.stdin.read(1)
+            finally:
+                termios.tcsetattr(fd, termios.TCSADRAIN, old)
+    except Exception:
+        input()  # fallback
+    print()

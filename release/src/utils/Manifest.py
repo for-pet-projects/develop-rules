@@ -22,3 +22,7 @@ class Manifest:
     @property
     def git_client(self) -> str:
         return self._data.get("git_client", "github")
+    
+    @property
+    def full_name(self) -> str:
+        return f"{self.name}-v{self.version}-{self.git_client}"

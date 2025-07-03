@@ -19,7 +19,7 @@ from release.src.preparer.Preparer import ReleasePreparer
 from release.src.translate.Translator import Translator
 from release.src.builder.Builder import ReleaseBuilder
 
-from release.src.utils.Print import print_status
+from release.src.utils.Print import print_status, wait_key
 
 class ReleaseRunner:
     def __init__(self):
@@ -41,9 +41,9 @@ class ReleaseRunner:
 
         print_status("INF", f"Translating to: {self.manifest.language}")
         self.translator.translate()
+        wait_key()
 
         print_status("INI", "Building release")
-        
         self.builder.build()
 
         print_status("OK", "Release ready")

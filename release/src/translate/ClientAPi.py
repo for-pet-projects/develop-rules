@@ -1,19 +1,21 @@
-import deepl, os
+import requests
+import time
+import random
+import json
+from urllib.parse import quote
 from release.src.utils.Print import print_status
 
-class DeepLApiClient:
+class ApiClient:
+    
     def __init__(self, api_key: str | None = None):
-        self.api_key = api_key or os.getenv("DEEPL_API_KEY")
-        if not self.api_key:
-            self.api_key = input("Enter your DeepL API key: ").strip()
-
-        self.translator = deepl.Translator(self.api_key)
+        pass#$self.translator = DeepLWebTranslator()
 
     def translate(self, text: str, target_lang: str) -> str:
-        print_status("INF", f"Translating via DeepL → {target_lang}")
         try:
-            result = self.translator.translate_text(text, target_lang=target_lang)
-            return result.text
+            translated = text#self.translator.translate(text, target_lang)
+            if translated == text:
+                print_status("WRN", "Translation returned original text (possible failure)")
+            return translated
         except Exception as e:
-            print_status("ERR", f"DeepL API error: {e}")
-            return text  # fallback: return original text
+            print_status("ERR", f"Translation failed: {str(e)}")
+            return text  # Fallback to original text on failure
