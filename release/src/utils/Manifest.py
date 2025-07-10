@@ -25,4 +25,4 @@ class Manifest:
     
     @property
     def full_name(self) -> str:
-        return f"{self.name}-v{self.version}-{self.git_client}"
+        return f"{self.name}-v{self.version}-{self.git_client}-{self.language}"

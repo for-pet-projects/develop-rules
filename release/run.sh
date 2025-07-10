@@ -26,7 +26,7 @@ source "$VENV_DIR/bin/activate"
 if [ -f "$REQ_FILE" ]; then
   echo "[INI] Installing dependencies..."
   pip install --upgrade pip > /dev/null
-  pip install -r "$REQ_FILE"
+  pip install -r "$REQ_FILE" -qq 
 else
   echo "[WRN] No requirements.txt found: $REQ_FILE"
 fi

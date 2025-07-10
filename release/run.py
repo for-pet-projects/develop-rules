@@ -1,4 +1,4 @@
-import sys
+import sys, signal
 from pathlib import Path
 
 def find_repo_root() -> Path:
@@ -16,7 +16,6 @@ from release.src.utils.Paths import ProjectPath
 
 from release.src.utils.Manifest import Manifest
 from release.src.preparer.Preparer import ReleasePreparer
-from release.src.translate.Translator import Translator
 from release.src.builder.Builder import ReleaseBuilder
 
 from release.src.utils.Print import print_status, wait_key
@@ -28,7 +27,6 @@ class ReleaseRunner:
         self.manifest       = Manifest(self.ppath.release_dir / "manifest.toml")
         self.preparer       = ReleasePreparer   (self.manifest, self.ppath)
         self.builder        = ReleaseBuilder    (self.manifest, self.ppath)
-        self.translator     = Translator        (self.manifest, self.ppath)
 
     def run(self):
         print_status("INF", f"Name:  {self.manifest.name}")
@@ -39,8 +37,7 @@ class ReleaseRunner:
         print_status("INI", "Preparing...")
         self.preparer.prepare()
 
-        print_status("INF", f"Translating to: {self.manifest.language}")
-        self.translator.translate()
+        print_status("INF", f"Press any key to build")
         wait_key()
 
         print_status("INI", "Building release")
@@ -50,6 +47,8 @@ class ReleaseRunner:
         return 0
 
 def main():
+    signal.signal(signal.SIGINT, lambda *_: \
+        sys.exit("\n[WRN] Interrupted by user (Ctrl+C). Exiting gracefully."))
     runner = ReleaseRunner()
     return runner.run()
 

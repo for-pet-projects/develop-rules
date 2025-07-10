@@ -1,19 +1,18 @@
-import os
-import sys
+import os, sys
 
 def print_status(tag: str, message: str):
     COLORS = {
-        "INF": "\033[94m",  # синий
-        "ERR": "\033[91m",  # красный
-        "WRN": "\033[93m",  # жёлтый
-        "OK":  "\033[92m",  # зелёный
-        "ASK": "\033[96m",  # бирюзовый (вопрос/ввод)
-        "INI": "\033[95m",  # фиолетовый (инициализация)
-        "RST": "\033[0m",   # сброс цвета
+        "INF": "\033[94m",
+        "ERR": "\033[91m",
+        "WRN": "\033[93m",
+        "OK":  "\033[92m",
+        "ASK": "\033[96m",
+        "INI": "\033[95m",
+        "RST": "\033[0m",
     }
 
     tag = tag.upper()[:3]
-    color = COLORS.get(tag, "\033[90m")  # серый по умолчанию
+    color = COLORS.get(tag, "\033[90m")
     reset = COLORS["RST"]
     print(f"{color}[{tag:<3}]{reset} {message}")
 
