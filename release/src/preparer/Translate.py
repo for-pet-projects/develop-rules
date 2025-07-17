@@ -41,6 +41,7 @@ class TranslationGate:
         return hashlib.sha256(data).hexdigest()
 
     def ensure(self, original: Path) -> Path:
+        self.register(original)
         if self.lang == "en":
             return original
 
@@ -56,8 +57,6 @@ class TranslationGate:
         if translated.exists() and \
             (stored_hash == original_hash or stored_hash == None):
             return translated
-        
-        self.register(original)
 
         if translated.exists():
             print_status("WRN", f"Translation outdated: {translated}")

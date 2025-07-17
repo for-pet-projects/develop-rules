@@ -1,1 +1,12 @@
-{}
+{
+  "git/templates/.github/PULL_REQUEST_TEMPLATE.md": "7b5956af0d4fdc88a9a6ac93151d0031cf3c5c87a30e612e227c1df6960f13ef",
+  "git/templates/.github/ISSUE_TEMPLATE/release.md": "8ff555fda55350a1d648ca6413e825cab9a07281211416021a2be4c57d040a2e",
+  "git/templates/.github/ISSUE_TEMPLATE/bugfix.md": "706af5f6d07295cc734d992e753b53d22837e8cba512e0f05b21bc13a2b38e50",
+  "git/templates/.github/ISSUE_TEMPLATE/feature.md": "6bf293070d15d38a13eaef99cbebd6decaba39964ca8a072848831baa064ade7",
+  "git/templates/.github/ISSUE_TEMPLATE/chore.md": "1b9054819f19524f5647e118f64a718033f194a3f1042890d7a88cc71f43fc91",
+  "git/templates/.github/ISSUE_TEMPLATE/hotfix.md": "8d707e69aa57854a0328e5456d85e1ac7ea179aa584dc6ac5ebb8a2464848c3a",
+  "git/templates/.github/ISSUE_TEMPLATE/experimental.md": "88dde5d2feaaa95ccca48bdd595b9f32314a3d1ef14892ff92f445691cc2b8de",
+  "git/templates/.github/ISSUE_TEMPLATE/config.yml": "b795747dcc0f3f6e7f7c99b87f06f56c6a4718c6dcd7c4031befc25438b59055",
+  "git/templates/.github/ISSUE_TEMPLATE/refactor.md": "64d05da46ea4eb34bddef9057eb2be131ba5c9c103f1bfd44650ac420b1ed580",
+  "git/templates/.github/ISSUE_TEMPLATE/epic.md": "75ae9437ead05d9a8a6289e6af43ec6a720272e0fe3c2c39be134ea2ff66ad55"
+}
