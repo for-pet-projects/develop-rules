@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -20,7 +20,7 @@ if [ ! -d "$VENV_DIR" ]; then
 fi
 
 # 4. Activate venv
-source "$VENV_DIR/bin/activate"
+. "$VENV_DIR/bin/activate"
 
 # 5. Install dependencies
 if [ -f "$REQ_FILE" ]; then

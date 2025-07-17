@@ -6,9 +6,10 @@ This project builds a self-contained `.run` archive that packages documentation,
 
 ## 🖥️ Getting Started
 
-Run the wrapper:
-```bash
-bash release/run.sh
+Run the wrapper from project root:
+```sh
+chmod +x release/run.sh
+release/run.sh
 ```
 
 ---
