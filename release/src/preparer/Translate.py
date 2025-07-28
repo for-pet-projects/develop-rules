@@ -55,7 +55,7 @@ class TranslationGate:
         stored_hash = self.registry.get_hash(str(rel_path))
 
         if translated.exists() and \
-            (stored_hash == original_hash or stored_hash == None):
+            (stored_hash == original_hash or stored_hash is None):
             return translated
 
         if translated.exists():
