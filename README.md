@@ -51,7 +51,7 @@ Please follow Git-related naming and branching rules described in [`git/`](./git
 ## 📄 License
 
 This project is licensed under the BSD 3-Clause License
-You are free to use, modify, and redistribute the code and materials, provided that:
+You are free to use, modify, and redistribute the code and materials, provided that:.
 
 - The original copyright and license are retained
 - Binary redistributions include the same disclaimer
