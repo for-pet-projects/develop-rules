@@ -1,7 +1,7 @@
 # ⚙️ Develop Rules & Engineering Standards
 
 This repository provides unified development rules, workflows, and templates across several engineering domains — including Git, C/C++ (desktop & embedded), Python, and beyond.  
-It aims to ensure consistency and clarity across teams and platforms
+It aims to ensure consistency and clarity across teams and platforms.
 
 ---
 
