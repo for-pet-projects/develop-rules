@@ -1,0 +1,27 @@
+blank_issues_enabled: false
+contact_links: []
+
+issue_templates:
+  - name: Feature Request
+    description: Suggest a new feature or enhancement
+    file: feature-request.md
+
+  - name: Bug Report
+    description: Report a bug or unexpected behavior
+    file: bug-report.md
+
+  - name: Hotfix Request
+    description: Critical fix targeting production
+    file: hotfix-request.md
+
+  - name: Refactor Task
+    description: Structural change to codebase
+    file: refactor-task.md
+
+  - name: Chore Task
+    description: Minor cleanup or non-functional work
+    file: chore-task.md
+
+  - name: Experimental Note
+    description: Idea or test for an experimental branch
+    file: experimental-note.md
