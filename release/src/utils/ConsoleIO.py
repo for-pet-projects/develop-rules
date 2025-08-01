@@ -36,7 +36,7 @@ def wait_key():
         input()  # fallback
     print()
 
-def promt(msg : str, default : bool = True):
+def prompt(msg : str, default : bool = True):
     suffix = " [Y/n]" if default else " [y/N]"
     print_status("ASK", msg + suffix)
     choice = input().strip().lower()
