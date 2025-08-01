@@ -97,7 +97,7 @@ class Translator:
     def ensure_all(self, files: list[Path]) -> list[Path]:
         result = [self.gate.ensure(path) for path in files]
 
-        if promt("Update translate hash registry?"):
+        if prompt("Update translate hash registry?"):
             self.gate.save()
 
         return result
