@@ -70,7 +70,7 @@ class TranslationGate:
         if translated.exists():
             print_status("WRN", f"Translation outdated: {translated}")
 
-            if promt("Use original instead?", False):
+            if prompt("Use original instead?", False):
                 return original
             else:
                 return translated
