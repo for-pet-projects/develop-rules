@@ -35,3 +35,12 @@ def wait_key():
     except Exception:
         input()  # fallback
     print()
+
+def promt(msg : str, default : bool = True):
+    suffix = " [Y/n]" if default else " [y/N]"
+    print_status("ASK", msg + suffix)
+    choice = input().strip().lower()
+    if default:
+        return not (choice == 'n')
+    else:
+        return (choice == 'y')

@@ -1,4 +1,5 @@
 from pathlib import Path
+from release.src.utils.ConsoleIO import print_status
 
 class ListLoader:
     def __init__(self, source_dir: Path, dest_dir: Path):
@@ -34,6 +35,6 @@ class ListLoader:
                 continue
             source, dest = parsed
             if not source.exists():
-                print(f"[WARN] Missing: {source}")
+                print_status("WRN", f"Missing: {source}")
             result.append((source, dest))
         return result

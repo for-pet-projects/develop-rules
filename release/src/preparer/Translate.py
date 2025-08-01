@@ -1,7 +1,16 @@
-import hashlib, json
+import hashlib, json, functools
 from pathlib import Path
-from release.src.utils.Print import print_status, wait_key
+from release.src.utils.ConsoleIO import print_status, promt
 
+def update_registry_on_success(func):
+    @functools.wraps(func)
+    def wrapper(self, original: Path):
+        rel_path = original.relative_to(self.project_root)
+        current_hash = self._hash_content(original)
+        result = func(self, original)
+        self.registry.set_hash(str(rel_path), current_hash)
+        return result
+    return wrapper
 
 class TranslationRegistry:
     def __init__(self, lang: str, i18n_root: Path):
@@ -40,16 +49,16 @@ class TranslationGate:
         data = path.read_bytes()
         return hashlib.sha256(data).hexdigest()
 
+    @update_registry_on_success
     def ensure(self, original: Path) -> Path:
-        self.register(original)
-        if self.lang == "en":
-            return original
-
-        rel_path = original.relative_to(self.project_root)
-        translated = self.i18n_root / self.lang / rel_path
-
         if not original.exists():
             raise FileNotFoundError(f"Missing source file: {original}")
+        
+        if self.lang == "en":
+            return original
+        
+        rel_path = original.relative_to(self.project_root)
+        translated = self.i18n_root / self.lang / rel_path
 
         original_hash = self._hash_content(original)
         stored_hash = self.registry.get_hash(str(rel_path))
@@ -61,8 +70,7 @@ class TranslationGate:
         if translated.exists():
             print_status("WRN", f"Translation outdated: {translated}")
 
-            choice = input("Use original instead? [y/N]: ").strip().lower()
-            if choice == "y":
+            if promt("Use original instead?", False):
                 return original
             else:
                 return translated
@@ -70,18 +78,11 @@ class TranslationGate:
             print_status("WRN", f"Translation missing: {translated}")
             print_status("INF", f"Original: {original}")
 
-            choice = input("Use original instead? [y/N]: ").strip().lower()
-            if choice == "y":
+            if promt("Use original instead?", False):
                 return original 
             else:
                 raise RuntimeError(f"Missing valid translation for: {rel_path}")
- 
-
-    def register(self, original: Path):
-        rel_path = original.relative_to(self.project_root)
-        original_hash = self._hash_content(original)
-        self.registry.set_hash(str(rel_path), original_hash)
-
+            
     def save(self):
         self.registry.save()
 
@@ -96,8 +97,7 @@ class Translator:
     def ensure_all(self, files: list[Path]) -> list[Path]:
         result = [self.gate.ensure(path) for path in files]
 
-        choice = input("Update translate hash registry? [Y/n]: ").strip().lower()
-        if choice != "n":
+        if promt("Update translate hash registry?"):
             self.gate.save()
 
         return result

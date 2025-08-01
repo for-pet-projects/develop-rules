@@ -5,7 +5,7 @@ import tarfile
 from release.src.utils.Manifest import Manifest
 from release.src.utils.Paths import ProjectPath
 
-from release.src.utils.Print import print_status
+from release.src.utils.ConsoleIO import print_status
 
 class BuildScriptGenerator:
     def __init__(self, manifest: Manifest, ppath : ProjectPath):

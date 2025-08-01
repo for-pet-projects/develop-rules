@@ -7,7 +7,7 @@ from release.src.utils.Manifest import Manifest
 from release.src.preparer.Translate import Translator
 from release.src.preparer.ListLoader import ListLoader
 
-from release.src.utils.Print import print_status
+from release.src.utils.ConsoleIO import print_status
 
 class UnitPreparer:
     def __init__(self, name : str, manifest: Manifest, ppath : ProjectPath):
