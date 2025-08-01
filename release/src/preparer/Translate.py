@@ -78,7 +78,7 @@ class TranslationGate:
             print_status("WRN", f"Translation missing: {translated}")
             print_status("INF", f"Original: {original}")
 
-            if promt("Use original instead?", False):
+            if prompt("Use original instead?", False):
                 return original 
             else:
                 raise RuntimeError(f"Missing valid translation for: {rel_path}")
