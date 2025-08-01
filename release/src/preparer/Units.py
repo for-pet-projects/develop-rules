@@ -25,20 +25,9 @@ class UnitPreparer:
     def prepare(self):
         self._ensure_clean(self.dest_dir)
         
-        raw_entries = self.list_loader.load(self.list_path)
-        expanded_entries = []
-        for src, dst in raw_entries:
-            if src.is_file():
-                expanded_entries.append((src, dst))
-            elif src.is_dir():
-                for path in src.rglob("*"):
-                    if path.is_file():
-                        rel = path.relative_to(src)
-                        new_dest = dst / rel if dst else None
-                        expanded_entries.append((path, new_dest))
+        entries = self.list_loader.load(self.list_path)
 
-
-        sources, destinations = zip(*expanded_entries)
+        sources, destinations = zip(*entries)
         translated_sources = self.translator.ensure_all(list(sources))
         final_entries = list(zip(translated_sources, destinations))
 
