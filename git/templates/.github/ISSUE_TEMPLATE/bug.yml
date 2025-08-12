@@ -1,0 +1,75 @@
+name: "bug"
+description: "Non-release bug report"
+title: "bug/short-description"
+labels: [
+    "bug"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for fix non-release bugs 
+                    (new /bug branches)
+                    Optional sections may be omitted
+                -->
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label: "Ancestors"
+            description: "e.g., `dev/server` or `epic/fix-auth-#128`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "Short and explicit description what is broken and why it's a problem..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: expected
+        attributes:
+            label       : "Expected Behavior"
+            placeholder : "What should have happened..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: actual
+        attributes:
+            label       : "Actual Behavior"
+            placeholder : "What actually happened..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: steps
+        attributes:
+            label       : "Steps to Reproduce"
+            placeholder: |
+                1. ...
+                2. ...
+                3. ...
+        validations:
+            required: false
+
+    -   type: textarea
+        id: environment
+        attributes:
+            label       : "Environment"
+            placeholder : "OS, browser, device, server, etc."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: dependencies
+        attributes:
+            label       : "Dependencies"
+            placeholder : "Related issues, services, versions"
+        validations:
+            required: false
