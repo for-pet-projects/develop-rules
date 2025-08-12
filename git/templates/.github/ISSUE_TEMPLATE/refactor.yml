@@ -1,0 +1,66 @@
+name: "refactor"
+description: "Structural improvements in code"
+title: "refactor/short-description"
+labels: [
+    "refactor"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for structural improvements in code
+                    (new /refactor branches)
+                    Optional sections may be omitted
+                -->
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label       : "Ancestors"
+            description : "e.g., `epic/core-redesign-#201`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "What needs to be restructured and why..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: goals
+        attributes:
+            label       : "Goals"
+            placeholder : |
+                - [ ] ...
+            render      : markdown
+        validations:
+            required: true
+
+    -   type: textarea
+        id: risks
+        attributes:
+            label       : "Risks"
+            placeholder : "What could break or degrade..."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: scope
+        attributes:
+            label       : "Scope"
+            placeholder : "Files, modules, systems affected..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: dependencies
+        attributes:
+            label       : "Dependencies"
+            placeholder : "Coupled features, APIs, tests..."
+        validations:
+            required: false

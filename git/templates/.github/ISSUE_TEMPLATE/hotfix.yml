@@ -1,0 +1,65 @@
+name: "hotfix"
+description: "Urgent release bugs or issues"
+title: "hotfix/short-description"
+labels: [
+    "hotfix",
+    "P0"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for urgent production issues requiring 
+                    immediate attention (new /hotfix branches)
+                    Optional sections may be omitted.
+                -->
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label       : "Ancestors"
+            description : "Usually `main/<global_version>`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "Critical issue affecting production..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: impact
+        attributes:
+            label       : "Impact"
+            placeholder : "Severity, business/user consequences..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: steps_observations
+        attributes:
+            label       : "Steps to Reproduce / Observations"
+            placeholder : "If known..."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: quick_fix_plan
+        attributes:
+            label       : "Quick Fix Plan"
+            placeholder : "What needs to be patched immediately..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: post_fix_plan
+        attributes:
+            label       : "Post-fix Plan"
+            placeholder : "Longer-term fix or follow-up actions..."
+        validations:
+            required: false

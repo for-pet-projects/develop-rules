@@ -1,0 +1,72 @@
+name: "topic"
+description: "Discussions"
+title: "topic/short-description"
+labels: [
+    "topic"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for discussions (topic branches or issues)
+                    Use to propose ideas, architectural decisions, conventions, etc.
+                -->
+
+    -   type: input
+        id: subject
+        attributes:
+            label       : "Subject"
+            placeholder : "Concise summary of the topic..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: context
+        attributes:
+            label       : "Context"
+            placeholder : "Background, motivation, and what triggered the discussion..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: key_points
+        attributes:
+            label       : "Key Points"
+            placeholder : |
+                Main questions, ideas or options to discuss:
+                - ...
+                - ...
+                - ...
+            render      : markdown
+        validations:
+            required: false
+
+    -   type: textarea
+        id: pros_cons
+        attributes:
+            label       : "Pros and Cons"
+            placeholder : |
+                If applicable, list pros/cons of different approaches:
+                - **Option A**: pros..., cons...
+                - **Option B**: pros..., cons...
+            render      : markdown
+        validations:
+            required: false
+
+    -   type: textarea
+        id: related
+        attributes:
+            label       : "Related Materials"
+            placeholder : "Links to relevant issues, documents, references..."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: outcome
+        attributes:
+            label       : "Outcome (to be filled after resolution)"
+            placeholder : "Summary of what was decided or the next step..."
+        validations:
+            required: false

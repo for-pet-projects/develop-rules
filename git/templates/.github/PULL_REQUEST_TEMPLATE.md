@@ -1,22 +1,28 @@
-Closes #<issue-number>
+<!-- Unified PR template. Keep it delta-only relative to the linked issue. -->
 
-<!-- 
-  - Use `WIP:` or draft status if the PR is not ready
--->
+## Related Issue
+<!-- Use a closing keyword e.g., Closes #123.
+     Note: GitHub auto-closes the issue ONLY after this PR is merged
+     into the repository’s default branch (e.g., main). -->
+Closes #...
 
-## Description
-<!-- What this PR changes and why -->
+## Delta vs Issue
+<!-- What is done here beyond what's described in the issue? Keep it short. -->
 
-## What Was Done
-<!-- Key changes in this PR -->
+## Verification
+<!-- How you verified the change: steps / tests / demo -->
+1. ...
+2. ...
 
-## How to Test
-<!-- Steps to verify functionality -->
+## Risk / Rollback
+<!-- Potential side effects; how to revert quickly if needed -->
+- Risk: ...
+- Rollback: ...
 
-## Checklist
-- [ ] Code builds and runs correctly
-- [ ] Tests (if any) pass
-- [ ] Style and formatting follow project conventions
-- [ ] Documentation updated (if applicable)
-- [ ] PR has appropriate reviewers and labels
-- [ ] Requires at least **2** approvals
+## Checklists
+<!-- Keep only what applies -->
+- [ ] Lint / CI green
+- [ ] Enough approvals received
+- [ ] Documentation updated (if needed)
+- [ ] QA confirmed (if applicable)
+- [ ] Release notes / CHANGELOG updated (if user-facing)

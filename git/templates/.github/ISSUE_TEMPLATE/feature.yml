@@ -1,0 +1,59 @@
+name: "feature"
+description: "New functionality or enhancement"
+title: "feature/short-description"
+labels: [
+    "feature"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for request new /feature branches
+                    Optional sections may be omitted
+                -->
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label       : "Ancestors"
+            description : "e.g., `dev/workstation` or `epic/improve-auth-#42`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "What should be implemented and why..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: acceptance_criteria
+        attributes:
+            label       : "Acceptance Criteria"
+            placeholder : |
+                - [ ] ...
+                - [ ] ...
+                - [ ] ...
+            render      : markdown
+        validations:
+            required: true
+
+    -   type: textarea
+        id: dependencies
+        attributes:
+            label       : "Dependencies"
+            placeholder : "APIs, services, related issues..."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: additional_info
+        attributes:
+            label       : "Additional Info"
+            placeholder : "Anything helpful for the implementation..."
+        validations:
+            required: false

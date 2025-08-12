@@ -1,0 +1,61 @@
+name: "epic"
+description: "Large parent-level features grouping multiple related tasks"
+title: "epic/short-description"
+labels: [
+    "epic"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for epic planning (new /epic branches)
+                    Optional sections may be omitted
+                -->
+                > **Note:** This differs from a *feature*: an **epic is inheritable**.
+                > Child work (feature/…, bug/…, chore/…) should list this epic in **Ancestors**.
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label       : "Ancestors"
+            description : "Usually `dev/<global_version>`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "High-level goal or feature group..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: acceptance_criteria
+        attributes:
+            label       : "Acceptance Criteria"
+            placeholder : |
+                - [ ] ...
+                - [ ] ...
+                - [ ] ...
+            render      : markdown
+        validations:
+            required: true
+
+    -   type: textarea
+        id: dependencies
+        attributes:
+            label       : "Dependencies"
+            placeholder : "APIs, services, related issues..."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: additional_info
+        attributes:
+            label       : "Additional Info"
+            placeholder : "Anything helpful for the implementation..."
+        validations:
+            required: false

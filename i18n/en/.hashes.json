@@ -1,0 +1,20 @@
+{
+  "git/templates/.github/ISSUE_TEMPLATE/chore.yml": "022f4a962becccd6a1e1cc5d4911efd5b84bff75be63295c703af81361dacddc",
+  "git/templates/.github/ISSUE_TEMPLATE/release.yml": "3a9d275d8ccba29204ea0d265e430f34c501c032fff866c3d324e58f575a0544",
+  "git/templates/.github/ISSUE_TEMPLATE/feature.yml": "60813399df829c74d8e1a2dd3de0e7a2d41681409386974f9a214c0fc5b49a4e",
+  "git/templates/.github/ISSUE_TEMPLATE/epic.yml": "3870a4f62b7aa27573fc9296fdad981055b82546b7e29be35b54f570682f3f6d",
+  "git/templates/.github/ISSUE_TEMPLATE/hotfix.yml": "f0377abad742b266c5c65c1f43215f1d255aa3d71572284c4473a1f44a7d27d1",
+  "git/templates/.github/ISSUE_TEMPLATE/refactor.yml": "96d529d9647df05a96a3dd0f94bc1954d847df59ff9261e401ff3aa9584a389b",
+  "git/templates/.github/ISSUE_TEMPLATE/topic.yml": "bcfb400ae37cb916663b402a6c45cb30e7c2a954d1a4b8f41422203191e73c3e",
+  "git/templates/.github/ISSUE_TEMPLATE/config.yml": "05905c8f244d51298bbd1778c286c8a6c9f7adf0d0e5a5f72f764d71ec82cc64",
+  "git/templates/.github/ISSUE_TEMPLATE/poc.yml": "cb725b9bee31ecf3b8a6bad7fa3c058a37cf90abbdf1efad813874aab13db15a",
+  "git/templates/.github/ISSUE_TEMPLATE/bug.yml": "92da5c25688decd84883086e4d5de75bf96715b6af88976260e8af53a93af4be",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/release.md": "0aa693c993171acaacb98cedcc30b3df09aa5e7090cc2f54f5e035c88ea70473",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/bug.md": "ce349d13be71029149003db8913fa05b33cb7995dc25e89a7ad2a2faf0733580",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/feature.md": "c498152e89f10b43929de72af2c033edfd9c56bbb3380ee90af7bf13e30f1ba5",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/chore.md": "011405cb9a9314b7f79b7af8d7197e67d5b8740ac69f0e252124f9e1ac486bab",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/hotfix.md": "c74fb18b6f9bd78c00835952b8a78269513931e0a82a760299a4fdd62f557840",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/refactor.md": "9b09be0162027079579cdc38881faa77d8759814b77561b82a6ab505555b06f5",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE/epic.md": "0166fe677c6fcfce07830c79a38c2303fa77905ac2c3a505b48a9e9b67a22fdc",
+  "git/templates/.github/PULL_REQUEST_TEMPLATE.md": "2ff73faa6c75adead67fc4d4cdf142951d0c4d8eaaa7657bee48f78d97fadf4b"
+}

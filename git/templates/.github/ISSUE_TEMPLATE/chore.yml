@@ -1,0 +1,48 @@
+name: "chore"
+description: "Minor maintenance tasks"
+title: "chore/short-description"
+labels: [
+    "chore"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for minor maintenance tasks
+                    (new /chore branches)
+                    Optional sections may be omitted.
+                -->
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label: "Ancestors"
+            description: "e.g., `dev` or `epic/update-docs-#75`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "What needs to be updated/cleaned..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: examples
+        attributes:
+            label       : "Examples"
+            placeholder : "Docs to update, style fixes, configs, etc."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: dependencies
+        attributes:
+            label       : "Dependencies"
+            placeholder : "Related issues, services, versions"
+        validations:
+            required: false
