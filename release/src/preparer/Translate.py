@@ -1,6 +1,6 @@
 import hashlib, json, functools
 from pathlib import Path
-from release.src.utils.ConsoleIO import print_status, promt
+from release.src.utils.ConsoleIO import print_status, prompt
 
 def update_registry_on_success(func):
     @functools.wraps(func)
