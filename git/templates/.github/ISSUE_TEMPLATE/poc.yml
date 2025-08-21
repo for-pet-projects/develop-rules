@@ -1,0 +1,78 @@
+name: "poc"
+description: "Proof of concept: experimental branches, not intended for merge"
+title: "poc/short-description"
+labels: [
+    "poc"
+]
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for new /poc branches
+                    Optional sections may be omitted
+                -->
+                > **Policy:** Experiments must **NOT** be merged or deployed.  
+                > Use only for exploration and evaluation.
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label       : "Ancestors"
+            description : "e.g., `dev/server` or `epic/try-ml-approach-#310`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: idea
+        attributes:
+            label       : "Idea"
+            placeholder : "What are we testing, trying, or exploring..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: hypothesis
+        attributes:
+            label       : "Hypothesis / Motivation"
+            placeholder : "Why this experiment is being done..."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: setup
+        attributes:
+            label       : "Setup"
+            placeholder : "How to run or evaluate it..."
+        validations:
+            required: false
+
+    -   type: textarea
+        id: expected_outcomes
+        attributes:
+            label       : "Expected Outcomes"
+            placeholder : "What success would look like..."
+        validations:
+            required: false
+
+    -   type: checkboxes
+        id: status
+        attributes:
+            label: "Status"
+            options:
+                -   label: "Proof of concept done"
+                -   label: "Evaluate results"
+                -   label: "Decide: promote or discard"
+        validations:
+            required: false
+
+    -   type: checkboxes
+        id: no_merge_ack
+        attributes:
+            label: "Compliance"
+            options:
+                -   label: "I acknowledge this experiment must NOT be merged or deployed"
+                    required: true
+        validations:
+            required: true
