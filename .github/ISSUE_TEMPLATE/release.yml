@@ -1,0 +1,55 @@
+name: "release"
+description: "Official release tracking"
+title: "release/vX.Y.Z"
+labels:
+    - release
+assignees: []
+body:
+    -   type: markdown
+        attributes:
+            value: |
+                <!-- 
+                    Template for official release tracking (new /release branches)
+                    Required for each version before merging to main
+                -->
+
+    -   type: input
+        id: ancestors
+        attributes:
+            label       : "Ancestors"
+            description : "Usually `dev/<global_version>`"
+        validations:
+            required: true
+
+    -   type: textarea
+        id: description
+        attributes:
+            label       : "Description"
+            placeholder : "Release of version `vX.Y.Z` from current development state."
+        validations:
+            required: true
+
+    -   type: textarea
+        id: checklist
+        attributes:
+            label  : "Checklist"
+            render : markdown
+            placeholder: |
+                - [ ] Create branch: `release/vX.Y.Z` from `dev`
+                - [ ] QA and manual testing
+                - [ ] Empty commit to mark the release:
+                    ```bash
+                    git commit --allow-empty -m "Release vX.Y.Z"
+                    ```
+                - [ ] Tag the release:
+                    ```bash
+                    git tag -a vX.Y.Z -m "Release vX.Y.Z"
+                    git push origin release/vX.Y.Z
+                    ```
+                - [ ] Generate and commit `CHANGELOG.md`
+                    <!-- If not automated yet, you can manually generate with: -->
+                    <!-- git log release/vA.B.C..release/vX.Y.Z --pretty=format:"- %s" -->
+                - [ ] Open PR: `release/vX.Y.Z → main`
+                - [ ] Merge PR using **squash**
+        validations:
+            required: true
