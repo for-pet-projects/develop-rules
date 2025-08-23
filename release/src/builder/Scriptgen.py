@@ -75,9 +75,13 @@ class BuildScriptGenerator:
             cp -r "$TMPDIR/wiki"/* "$TMPDIR/wiki-repo/"
 
             cd "$TMPDIR/wiki-repo"
-            git add .
-            git commit -m "Update wiki from release bundle"
-            git push
+            git add -A
+            if ! git diff --cached --quiet; then
+                git commit -m "Update wiki from release bundle"
+                git push
+            else
+                echo "Wiki: no changes to commit"
+            fi
 
             echo "--- Templates ---"
             git clone "$BASE_URL.git" "$TMPDIR/main-repo"
@@ -85,15 +89,19 @@ class BuildScriptGenerator:
             git checkout "$TEMPLATE_BRANCH" || git checkout -b "$TEMPLATE_BRANCH"
 
             TEMPLATE_ROOT="$TMPDIR/templates"
-            find "$TEMPLATE_ROOT" -type f | while read src; do
-                rel="${{src#$TEMPLATE_ROOT/}}"
-                mkdir -p "$(dirname "$rel")"
-                cp "$src" "$rel"
-            done
+            if [ -d "$TEMPLATE_ROOT" ]; then
+                rsync -a "$TEMPLATE_ROOT"/ ./
+            else
+                echo "Templates: directory not found: $TEMPLATE_ROOT"
+            fi
 
-            git add .
-            git commit -m "Add templates from release bundle"
-            git push -u origin "$TEMPLATE_BRANCH"
+            git add -A
+            if ! git diff --cached --quiet; then
+                git commit -m "Add templates from release bundle"
+                git push -u origin "$TEMPLATE_BRANCH"
+            else
+                echo "Templates: no changes to commit"
+            fi
 
             echo "Done"
             exit 0

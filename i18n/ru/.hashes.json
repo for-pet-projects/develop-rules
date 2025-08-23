@@ -8,5 +8,7 @@
   "git/templates/.github/ISSUE_TEMPLATE/experimental.md": "88dde5d2feaaa95ccca48bdd595b9f32314a3d1ef14892ff92f445691cc2b8de",
   "git/templates/.github/ISSUE_TEMPLATE/config.yml": "b795747dcc0f3f6e7f7c99b87f06f56c6a4718c6dcd7c4031befc25438b59055",
   "git/templates/.github/ISSUE_TEMPLATE/refactor.md": "64d05da46ea4eb34bddef9057eb2be131ba5c9c103f1bfd44650ac420b1ed580",
-  "git/templates/.github/ISSUE_TEMPLATE/epic.md": "75ae9437ead05d9a8a6289e6af43ec6a720272e0fe3c2c39be134ea2ff66ad55"
+  "git/templates/.github/ISSUE_TEMPLATE/epic.md": "75ae9437ead05d9a8a6289e6af43ec6a720272e0fe3c2c39be134ea2ff66ad55",
+  "git/rules/issue.md": "9b4efe2c2d29290d1426b5344c19a66585e88f292993a099c7b239cc8c4f453d",
+  "git/rules/branch.md": "522b95758f55b7ed4c1dbb6ab9bb1e778d20795139ffa5b1836baecc6cddb5e2"
 }
